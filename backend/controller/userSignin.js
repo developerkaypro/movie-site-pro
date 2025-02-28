@@ -30,7 +30,7 @@ if(checkPassword){
   }
  const tokenOption={
      httpOnly:true,
-    secure:false
+    secure:true
    }
   const token=await jwt.sign(
   tokenData,
