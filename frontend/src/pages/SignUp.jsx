@@ -6,6 +6,7 @@ import {toast} from "react-toastify";
 import {useState} from "react";
 import summaryApi from "../common/index"
 const SignUp=()=>{
+ const [isLoading,setIsLoading]=useState(false)
 const [showPassword,setShowPassword]=useState(false)
 const [showConfirmPassword,setShowConfirmPassword]=useState(false) 
 const [email,setEmail]=useState("");
@@ -16,6 +17,8 @@ const navigate=useNavigate();
 const [profilePic,setProfilePic]=useState("")
 const handleSubmit=async (e)=>{
   e.preventDefault();
+  setIsLoading(true)
+try{ 
  const data={
       email,
       password,
@@ -45,6 +48,13 @@ const handleSubmit=async (e)=>{
 }else{
  console.log("please check and confirm password");
 }
+}
+catch(err){console.log(err)}
+finally{
+setIsLoading(false)
+
+}
+
 }
 const handleUploadPic=async (e)=>{
    const file=e.target.files[0]
@@ -132,13 +142,14 @@ return (
  
  </div>  
 
- <button className="bg-red-600 
+ <button disabled={isLoading} className="bg-red-600 
 text-white px-6 py-2 w-full max-w-[150px] 
 rounded-full hover:scale-110 transition-all mx-auto
- block mt-4">SignUp</button>
+ block mt-4">{isLoading?<span>Loading..</span>:
+<span>SignUp</span>}</button>
 
  </form>
- <p>{email}</p>
+
 
  <p className="my-5"><Link className="text-red-600 hover:text-red-700 hover:underline" to="/login">Already have an account? Login</Link></p>
  </div>
