@@ -19,7 +19,8 @@ return (
 <Route path="/" element={<Header/>} >
 <Route exact path="/"
  element={isLogin?<Home/>:<Navigate replace to="/login"/>}/>
-<Route path="/login" element={<Login/>}/>
+<Route path="/login" element={!isLogin?<Login/>:
+<Navigate replace to="/"/>}/>
 <Route path="/forgot-password" element={<ForgotPassword/>}/>
 <Route path="/sign-up" element={<SignUp/>}/>
 <Route path="/movies/movie/:movie" element={isLogin?<Movie/>:
