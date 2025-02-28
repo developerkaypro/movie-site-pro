@@ -59,9 +59,10 @@ return (
  <div className="mx-auto container px-4">
   <div className="bg-white-600 p-2 w-full max-w-sm mx-auto">
   <div className="w-20 h-20 mx-auto relative overflow-hidden rounded-full">
-      <div>
+      <div>{!profilePic?(
       <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT06G1aDQ2I-QC5CQbAj0L9DH8TebqQt9ykxw&usqp=CAU"} alt="signup icon"/>
-      </div>
+     ):<img src={profilePic} alt="your profile pic"/> } 
+     </div>
      <form onSubmit={(e)=>e.preventDefault()}>
      <label>
     
